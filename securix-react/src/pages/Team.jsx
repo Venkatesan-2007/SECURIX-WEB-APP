@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Team() {
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    const storedTeam = JSON.parse(localStorage.getItem("securix_team") || "[]");
+    setTeam(storedTeam);
+  }, []);
+
   return (
     <section className="main-section">
       <h2>Our Team</h2>
       <p>We are ethical hackers, developers and analysts shaping a secure world.</p>
-      <div className="flex" style={{ justifyContent: "center", marginTop: 20 }}>
-        <div className="team-card"><img src="https://i.ibb.co/Ng6hvKYF/founder.jpg" alt="Hajmal Irfan"/><h4>Hajmal Irfan</h4><small>Founder</small></div>
-        <div className="team-card"><img src="https://i.ibb.co/0jpZKsWY/hari.jpg" alt="Hariharan J"/><h4>Hariharan J</h4><small>CEO</small></div>
-        <div className="team-card"><img src="https://i.ibb.co/x8cx8LmV/venkatesh.jpg" alt="D. Venkatesan"/><h4>D. Venkatesan</h4><small>Senior Dev</small></div>
+      <div className="services-grid">
+        {team.length > 0 ? (
+          team.map((member, index) => (
+            <div key={index} className="team-card">
+              {member.file && (
+                <img 
+                  src={member.file} 
+                  alt={member.name} 
+                  className="team-photo"
+                />
+              )}
+              <h3 className="service-name">{member.name}</h3>
+            </div>
+          ))
+        ) : (
+          <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "40px" }}>
+            <p>No team members added yet. Check back soon!</p>
+          </div>
+        )}
       </div>
     </section>
   );

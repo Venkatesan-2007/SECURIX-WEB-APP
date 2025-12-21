@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Splash from "./components/Splash";
-import ChatBot from "./components/ChatBot";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -36,7 +35,6 @@ export default function App() {
         </Routes>
       </main>
 
-      <ChatBot />
       <Footer />
     </div>
   );

@@ -13,7 +13,7 @@ export default function Navbar() {
         <NavLink to="/team">Team</NavLink>
         <NavLink to="/projects">Projects</NavLink>
         <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/admin">Admin</NavLink>
+        <NavLink to="/admin" className="admin-link">Admin</NavLink>
       </nav>
     </header>
   );

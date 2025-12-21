@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "env": {
+    "MONGO_URI": "@mongo_uri",
+    "JWT_SECRET": "@jwt_secret",
+    "GMAIL_USER": "@gmail_user",
+    "GMAIL_PASSWORD": "@gmail_password",
+    "OWNER_EMAIL": "@owner_email",
+    "NODE_ENV": "production"
+  },
+  "envFile": [
+    ".env.production.local",
+    ".env.local",
+    ".env"
+  ],
+  "builds": [
+    {
+      "src": "securix-react/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "securix-react/dist"
+      }
+    },
+    {
+      "src": "securix-backend/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "securix-backend/**"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "securix-backend/server.js",
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "OPTIONS"
+      ]
+    },
+    {
+      "src": "/",
+      "dest": "securix-react/dist/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "securix-react/dist/$1"
+    }
+  ],
+  "outputDirectory": "securix-react/dist",
+  "publicSource": "securix-react/dist"
+}
