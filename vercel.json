@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --prefix securix-react",
+  "buildCommand": "cd securix-react && npm run build",
+  "installCommand": "cd securix-react && npm install",
   "env": {
     "VITE_API_URL": "@vite_api_url"
   },
