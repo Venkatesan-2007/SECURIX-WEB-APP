@@ -48,6 +48,5 @@
       "dest": "securix-react/dist/$1"
     }
   ],
-  "outputDirectory": "securix-react/dist",
-  "publicSource": "securix-react/dist"
+  "outputDirectory": "securix-react/dist"
 }
