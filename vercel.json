@@ -10,11 +10,6 @@
     "OWNER_EMAIL": "@owner_email",
     "NODE_ENV": "production"
   },
-  "envFile": [
-    ".env.production.local",
-    ".env.local",
-    ".env"
-  ],
   "builds": [
     {
       "src": "securix-react/package.json",
